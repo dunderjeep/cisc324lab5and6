@@ -12,4 +12,4 @@ DiskDrive.class: DiskDrive.java
 	$(JCC) $(JFLAGS) DiskDrive.java
 
 clean:
-	$(RM) *.class *~
+	rm *.class 
