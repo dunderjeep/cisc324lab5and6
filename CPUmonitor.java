@@ -3,7 +3,7 @@ import java.util.*;
 
 public class CPUmonitor {
 	
-	private ArrayList<Integer> CPUs = new ArrayList<Integer>();		
+	private static ArrayList<Integer> CPUs = new ArrayList<Integer>();		
 	private int numberOfCPUs;
 
 	public CPUmonitor(int numberOfCPUs) {
@@ -18,6 +18,10 @@ public class CPUmonitor {
 	public synchronized void endCPUuse(Integer pid) {
 		CPUs.remove(pid);
 		notifyAll(); 		
+	}
+
+	public int getPIDindex(Integer pid){
+		return CPUs.indexOf(pid);
 	}
 
 }

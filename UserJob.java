@@ -33,6 +33,7 @@ public class UserJob extends Thread {
 			if (myJob == Job.CPU_BOUND) System.out.println("UserJob " + myName + " starting CPU burst of length " + sleepytime + ".");
 			else System.out.println("UserJob " + myName + " starting IO burst of length CPUtime " + sleepytime + ".");
 			CPU.startCPUuse(myName);
+			System.out.println("UserJob " + myName + " is starting to use CPU " + CPU.getPIDindex(myName));
 			try { sleep(sleepytime); } catch(Exception e) {};
 			CPU.endCPUuse(myName);
 			System.out.println("User " + myName + " requesting to access disk track " + trackNumber);
