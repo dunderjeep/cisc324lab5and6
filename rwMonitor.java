@@ -20,6 +20,7 @@ public class rwMonitor {
   private int writecount;  // A count of the number of writers who are
                            // currently writing (0 or 1).
 
+
   // This is the constructor for class rwMonitor.
   public rwMonitor() {
     readcount = 0;
