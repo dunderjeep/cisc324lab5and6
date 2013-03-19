@@ -19,7 +19,7 @@ public class UserJob extends Thread {
 		if (job == Job.CPU_BOUND) sleepytime = MIN_CPU_TIME + (int)(Math.random() * ((MAX_CPU_TIME - MIN_CPU_TIME) + 1));
 		else sleepytime = MIN_IO_TIME + (int)(Math.random() * ((MAX_IO_TIME - MIN_IO_TIME) + 1));						
 		trackNumber = (int)(Math.random() * ((DiskDrive.DISK_SIZE) + 1));
-		CPU = new CPUmonitor(1,1);
+		CPU = new CPUmonitor(3);
 		DD = new DiskDrive();
 	}
 
@@ -32,9 +32,9 @@ public class UserJob extends Thread {
 		for (int i = 0; i < 3; i++) {	
 			if (myJob == Job.CPU_BOUND) System.out.println("UserJob " + myName + " starting CPU burst of length " + sleepytime + ".");
 			else System.out.println("UserJob " + myName + " starting IO burst of length CPUtime " + sleepytime + ".");
-//			CPU.startCPUuse(i);
+			CPU.startCPUuse(myName);
 			try {sleep(sleepytime);} catch(Exception e) {};
-//			CPU.endCPUuse(i);
+			CPU.endCPUuse(myName);
 			System.out.println("User " + myName + " requesting to access disk track " + trackNumber);
 			DD.useTheDisk(trackNumber);
 			System.out.println("User " + myName + " finished reading disk track " + trackNumber);			
