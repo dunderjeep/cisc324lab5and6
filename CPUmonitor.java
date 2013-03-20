@@ -24,13 +24,16 @@ public class CPUmonitor {
 	public synchronized void startCPUuse(int pid) {
 		while (full()) try { wait(); } catch(Exception e) {};
 		replace(0, pid);
-		System.out.println("UserJob " + pid + " is exectuing on CPU " + getPIDindex(pid));
-		notifyAll();
+//		printCPUs();
+		System.out.println("UserJob " + pid + " is executing on CPU " + getPIDindex(pid));
+		printCPUs();
+//		notifyAll();
 	}
 
 	// free CPU by setting pid to 0, if there are free CPUs, wake up any waiting UserJobs 
 	public synchronized void endCPUuse(int pid) {
-		replace(pid, 0);
+		System.out.println("UserJob " + pid + " releasing CPU " + getPIDindex(pid));
+		replace(pid, 0);		
 		if (!full())
 			notifyAll(); 		
 	}
