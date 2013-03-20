@@ -12,6 +12,7 @@ public class UserJob extends Thread {
 	Job myJob;
 	private DiskDrive DD;
 	private CPUmonitor CPU;
+	private int userJobIterations = 10;
 	
 	public UserJob(int name, Job job, CPUmonitor CPUmon, DiskDrive diskMon) {
 		myName = name;	
@@ -22,7 +23,7 @@ public class UserJob extends Thread {
 
 	public void run() {
 		System.out.println("UserJob " + myName + " is starting.");	
-		for (int i = 1; i < 3; i++) {	
+		for (int i = 1; i <= userJobIterations; i++) {	
 			if (myJob == Job.CPU_BOUND) {
 				sleepytime = MIN_CPU_TIME + (int)(Math.random() * ((MAX_CPU_TIME - MIN_CPU_TIME) + 1));
 				System.out.println("UserJob " + myName + " starting CPU burst of length " + sleepytime + ".");

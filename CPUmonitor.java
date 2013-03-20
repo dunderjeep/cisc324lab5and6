@@ -4,7 +4,7 @@ import java.util.*;
 public class CPUmonitor {
 	
 	public static int[] CPUs = new int[0];	
-	public static final int NUMBER_OF_CPUS = 4;
+	public static final int NUMBER_OF_CPUS = 3;
 	
 	public CPUmonitor() {
 		init(NUMBER_OF_CPUS);		

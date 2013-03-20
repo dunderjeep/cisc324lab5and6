@@ -1,7 +1,7 @@
 public class MainMethod {
 	
   	public static void main (String argv[]) {
-	int numberOfProcesses = 6;
+	int numberOfProcesses = 20;
 	UserJob[] processes = new UserJob[numberOfProcesses + 1]; 
 	UserJob.Job job;
 	CPUmonitor cpuMon = new CPUmonitor();
