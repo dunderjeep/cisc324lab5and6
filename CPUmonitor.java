@@ -21,7 +21,7 @@ public class CPUmonitor {
 		while (full()) try { wait(); } catch(Exception e) {};
 		printCPUs();
 		replace(0, pid);
-		System.out.println("UserJob " + pid + " starting to use CPU " + getPIDindex(pid));
+		System.out.println("UserJob " + pid + " is exectuing on CPU " + getPIDindex(pid));
 		printCPUs();
 		notifyAll();
 	}
@@ -29,7 +29,6 @@ public class CPUmonitor {
 	public synchronized void endCPUuse(int pid) {
 		printCPUs();
 		replace(pid, 0);
-		printCPUs();
 		if (!full())
 			notifyAll(); 		
 	}
