@@ -1,5 +1,6 @@
 public class UserJob extends Thread {
 
+	// Limits for IO_BOUND, CPU_BOUND random variable
 	public static final int MIN_CPU_TIME = 100;
 	public static final int MAX_CPU_TIME = 1000;
 	public static final int MIN_IO_TIME = 1;
@@ -33,7 +34,7 @@ public class UserJob extends Thread {
 				System.out.println("UserJob " + myName + " starting IO burst of length CPUtime " + sleepytime + ".");
 			}
 			CPU.startCPUuse(myName);
-			try { sleep(sleepytime); } catch(Exception e) {};
+			try { sleep(sleepytime); } catch(Exception e) {};	// simulate CPU execution
 			CPU.endCPUuse(myName);
 			System.out.println("UserJob " + myName + " requesting to access disk track " + trackNumber);
 			trackNumber = (int)(Math.random() * ((DiskDrive.DISK_SIZE) + 1));
