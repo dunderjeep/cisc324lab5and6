@@ -13,11 +13,11 @@ public class UserJob extends Thread {
 	private DiskDrive DD;
 	private CPUmonitor CPU;
 	
-	public UserJob(int name, Job job) {
+	public UserJob(int name, Job job, CPUmonitor CPUmon, DiskDrive diskMon) {
 		myName = name;	
 		myJob = job;		
-		CPU = new CPUmonitor();
-		DD = new DiskDrive();
+		CPU = CPUmon;
+		DD = diskMon;
 	}
 
 	public void run() {

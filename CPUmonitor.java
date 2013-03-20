@@ -19,17 +19,17 @@ public class CPUmonitor {
 
 	public synchronized void startCPUuse(int pid) {
 		while (full()) try { wait(); } catch(Exception e) {};
-//		printCPUs();
+		printCPUs();
 		replace(0, pid);
 		System.out.println("UserJob " + pid + " starting to use CPU " + getPIDindex(pid));
-//		printCPUs();
+		printCPUs();
 		notifyAll();
 	}
 
 	public synchronized void endCPUuse(int pid) {
-//		printCPUs();
+		printCPUs();
 		replace(pid, 0);
-//		printCPUs();
+		printCPUs();
 		if (!full())
 			notifyAll(); 		
 	}
@@ -43,7 +43,10 @@ public class CPUmonitor {
 
 	private void replace(int target, int newValue) {
 		for (int i = 0; i < CPUs.length; i++) {
-			if (CPUs[i] == target) CPUs[i] = newValue;
+			if (CPUs[i] == target) {
+				CPUs[i] = newValue;
+				return;
+			} 
 		}
 	}
 
